@@ -17,6 +17,7 @@ module "networking" {
   source = "./networking"
 }
 
-# module "compute" {
-#   source = "./compute"
-# }
+module "compute" {
+  source                 = "./compute"
+  vpc_security_group_ids = [] #@TODO access from networking module
+}
