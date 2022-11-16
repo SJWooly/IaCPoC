@@ -12,3 +12,11 @@ terraform {
 provider "aws" {
   region = "us-west-1"
 }
+
+module "networking" {
+  source = "./networking"
+}
+
+# module "compute" {
+#   source = "./compute"
+# }

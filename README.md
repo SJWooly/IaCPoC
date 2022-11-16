@@ -11,6 +11,7 @@ A proof of concept work which will use Terraform and AWS to construct a simple w
 ## Steps
 - `terraform init` to initialise the Terraform workspace
 - `terraform apply` to view the planned infrastructure changes, and confirm to apply these
+-- you may need to run `terraform get` to pull in the module references to the overarching 'main.tf'
 - don't forget to `terraform destroy` afterwards
 
 
