@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.74.3" # newest is 4.16, auth issues?
+      version = "~> 4.16"
     }
   }
 
@@ -11,14 +11,4 @@ terraform {
 
 provider "aws" {
   region = "us-west-1"
-  # @TODO assume role ? permission issues from where
-}
-
-resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "ExampleAppServerInstance"
-  }
 }
