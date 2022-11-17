@@ -17,13 +17,12 @@ A proof of concept work which will use Terraform and AWS to construct a simple w
 ## Notes
 - for simplicity, I have omitted:
     - tags
-    - conditional creation/ count references
+    - conditional creation/ count references (opting for simpler dependancy specification)
+    - a private subnet (looking at commit history you can see I originally had one, but it is not necessary without a DB instance etc)
 
 ## TODO List
-- jog memory on breakdown of TF module structure
 - further define how I am interpreting the project with greater detail
     - currently: VPC, subnets, SGs, EC2, healthcheck
 - tf fmt !!
-- extrapolate overacrhing config, add tags (?)
 - healthcheck in aws, or bashscript to ping with updates etc?
 - add resource names/description where necessary (ie mostly where ref is not "this")

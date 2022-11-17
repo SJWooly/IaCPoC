@@ -19,6 +19,6 @@ module "networking" {
 
 module "compute" {
   source                 = "./compute"
-  subnet_id              = module.networking.private_subnet_id
+  subnet_id              = module.networking.subnet_id
   vpc_security_group_ids = module.networking.vpc_security_group_ids
 }

@@ -5,16 +5,12 @@ resource "aws_vpc" "this" {
   instance_tenancy     = "default"
 }
 
-resource "aws_subnet" "public" {
+resource "aws_subnet" "this" {
   vpc_id                  = aws_vpc.this.id
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
 }
 
-resource "aws_subnet" "private" {
-  vpc_id     = aws_vpc.this.id
-  cidr_block = "10.0.2.0/24"
-}
 
 resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
@@ -24,7 +20,7 @@ resource "aws_route_table" "public" {
   vpc_id = aws_vpc.this.id
 }
 
-resource "aws_route" "public_igw" {
+resource "aws_route" "this" {
   route_table_id         = aws_route_table.public.id
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.this.id
@@ -34,23 +30,11 @@ resource "aws_route" "public_igw" {
 }
 
 resource "aws_route_table_association" "ig_routes_to_public_sn" {
-  subnet_id      = aws_subnet.public.id
+  subnet_id      = aws_subnet.this.id
   route_table_id = aws_route_table.public.id
   depends_on = [
-    aws_subnet.public,
+    aws_subnet.this,
     aws_route_table.public
-  ]
-}
-
-resource "aws_route_table" "private" {
-  vpc_id = aws_vpc.this.id
-}
-
-resource "aws_route_table_association" "private_rt_to_sn" {
-  subnet_id      = aws_subnet.private.id
-  route_table_id = aws_route_table.private.id
-  depends_on = [
-    aws_route_table.private
   ]
 }
 
