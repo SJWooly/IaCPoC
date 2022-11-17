@@ -19,5 +19,6 @@ module "networking" {
 
 module "compute" {
   source                 = "./compute"
-  vpc_security_group_ids = [] #@TODO access from networking module
+  subnet_id              = module.networking.private_subnet_id
+  vpc_security_group_ids = module.networking.vpc_security_group_ids
 }

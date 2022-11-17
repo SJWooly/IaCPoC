@@ -72,10 +72,3 @@ resource "aws_security_group" "tls_http" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-resource "aws_instance" "this" {
-  subnet_id              = aws_subnet.private.id
-  ami                    = "ami-01cae1550c0adea9c"
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.tls_http.id]
-}
