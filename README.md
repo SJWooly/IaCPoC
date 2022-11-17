@@ -14,11 +14,16 @@ A proof of concept work which will use Terraform and AWS to construct a simple w
 -- you may need to run `terraform get` to pull in the module references to the overarching 'main.tf'
 - don't forget to `terraform destroy` afterwards
 
+## Notes
+- for simplicity, I have omitted:
+    - tags
+    - conditional creation/ count references
 
-@TODO List
+## TODO List
 - jog memory on breakdown of TF module structure
 - further define how I am interpreting the project with greater detail
     - currently: VPC, subnets, SGs, EC2, healthcheck
 - tf fmt !!
 - extrapolate overacrhing config, add tags (?)
 - healthcheck in aws, or bashscript to ping with updates etc?
+- add resource names/description where necessary (ie mostly where ref is not "this")
