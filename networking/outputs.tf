@@ -3,5 +3,5 @@ output "vpc_id" {
 }
 
 output "vpc_security_group_ids" {
-  value = []
+  value = aws_security_group.tls_http.id
 }
