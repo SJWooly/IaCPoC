@@ -1,5 +1,5 @@
 resource "aws_instance" "this" {
-  ami                    = "ami-0e8225827581c983a" #@TODO double check ami for region
+  ami                    = "ami-017c001a88dd93847"
   instance_type          = "t2.micro"
   vpc_security_group_ids = []
 }
