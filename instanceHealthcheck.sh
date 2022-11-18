@@ -5,8 +5,9 @@ echo Health Check Status Report
 echo `date`
 
 # @TODO potentially remove this - machine level metrics or user-facing?
+# or! @TODO replace with pass in parameter of IP
 status_check () {
-    http_status=`curl -s -o /dev/null -w "%{http_code}" "www.google.com"`
+    http_status=`curl -s -o /dev/null -w "%{http_code}" www.google.com`
       echo "HTTP status: $http_status"
 }
 

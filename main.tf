@@ -21,4 +21,5 @@ module "compute" {
   source                 = "./compute"
   subnet_id              = module.networking.subnet_id
   vpc_security_group_ids = module.networking.vpc_security_group_ids
+  path_to_ssh_key        = var.path_to_ssh_key
 }
