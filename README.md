@@ -18,8 +18,8 @@ A proof of concept work which will use Terraform and AWS to construct a simple w
 
 ## Notes
 - admittedly, I didn't put asside enough time for setting up a new personal machine before this project. Some additions I would've liked to include with more time:
-    - more comprehensive healthcheck script including overarching chron job to periodically run the checks
-    - 
+    - more comprehensive healthcheck script including overarching cron job to periodically run the checks
+    - clean up of SSH methodology
 - for simplicity, I have intentionally omitted:
     - tags
     - conditional creation/ count references (opting for simpler dependancy specification)
