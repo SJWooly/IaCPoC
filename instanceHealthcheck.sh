@@ -3,9 +3,7 @@ set -eu
 
 echo `date`
 
-# cpu_use=`expr 100 - $cpu_idle`
-#  echo "cpu utilization: $cpu_use"
-
+# @TODO potentially remove this - machine level metrics or user-facing?
 status_check () {
     http_status=`curl -s -o /dev/null -w "%{http_code}" "www.google.com"`
       echo "HTTP status: $http_status"
