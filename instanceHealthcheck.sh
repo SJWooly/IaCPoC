@@ -1,6 +1,7 @@
 #!/bin/bash
 set -eu
 
+echo Health Check Status Report
 echo `date`
 
 # @TODO potentially remove this - machine level metrics or user-facing?
@@ -10,23 +11,21 @@ status_check () {
 }
 
 cpu_usage () {
-cpu_use="CPU WIP"
- echo "CPU Utilization: $cpu_use"
+cpu_usage_pct=`top -b -n1 | grep ^%Cpu | awk '{print "CPU usage (%): " 100-$8}'`
+ echo "$cpu_usage_pct"
 }
 
 mem_usage () {
-mem_free="mem WIP"
-mem_use_pct="mem use pct WIP"
- echo "RAM space remaining : $mem_free MB (ie $mem_use_pct% utilised)"
+mem_usage_pct=`free -t | awk 'NR == 2 {print "Memory usage(%): " $3/$2*100}'`
+ echo "$mem_usage_pct"
 }
 
-disk_usage () {
-disk_free="disk WIP"
-disk_use_pct="disk use pct WIP"
- echo "Disk space remaining : $disk_free MB (ie $disk_use_pct% utilised)"
+swap_usage () {
+swap_usage=`free -t | awk 'NR == 3 {print "Swap usage (%): " $3/$2*100}'`
+ echo "$swap_usage"
 }
 
 status_check
 cpu_usage
 mem_usage
-disk_usage
+swap_usage
